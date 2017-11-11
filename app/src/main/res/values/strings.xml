@@ -1,0 +1,7 @@
+<resources>
+    <string name="select_button">Select</string>
+    <string name="app_name">Hanged Man</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
