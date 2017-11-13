@@ -129,6 +129,7 @@ public class NewGame extends AppCompatActivity {
             if (gameLogic.erSpilletVundet()){
                 editor = myPrefs.edit();
                 editor.putBoolean("condition", true);
+                editor.putInt("fails", wrongGuesses);
                 editor.apply();
             }
             else if (gameLogic.erSpilletTabt()){

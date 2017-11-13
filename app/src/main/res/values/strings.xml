@@ -4,4 +4,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Back</string>
+    <string name="play_again">Play Again</string>
+    <string name="a_new_high_score">A new high score!</string>
 </resources>
