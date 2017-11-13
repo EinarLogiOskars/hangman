@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewGame" />
-        <activity android:name=".EndgameScreen"></activity>
+        <activity android:name=".EndgameScreen" />
+        <activity android:name=".HighScore"></activity>
     </application>
 
 </manifest>

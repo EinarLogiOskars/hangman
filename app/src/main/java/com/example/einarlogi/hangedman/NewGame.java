@@ -2,6 +2,8 @@ package com.example.einarlogi.hangedman;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,6 +20,9 @@ public class NewGame extends AppCompatActivity {
 
     Galgelogik gameLogic;
 
+    SharedPreferences myPrefs;
+    SharedPreferences.Editor editor;
+
     int wrongGuesses;
     Button startBtn;
     Button returnBtn;
@@ -26,15 +31,16 @@ public class NewGame extends AppCompatActivity {
     TextView usedLetters;
     EditText letterField;
     Button guessBtn;
-    Boolean gameOn = false;
     InputMethodManager inputManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_newgame);
+        setContentView(R.layout.activity_newgame);
 
         gameLogic = new Galgelogik();
+
+        myPrefs = getSharedPreferences("prefs", 0);
 
         imgView = (ImageView) findViewById(R.id.imageView);
         wordView = (TextView) findViewById(R.id.wordView);
@@ -73,6 +79,14 @@ public class NewGame extends AppCompatActivity {
             }
         });
 
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainMenu = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(mainMenu);
+            }
+        });
+
 
 
     }
@@ -80,10 +94,15 @@ public class NewGame extends AppCompatActivity {
     public void newGame() {
 
         wrongGuesses = 0;
-        gameOn = true;
         gameLogic.nulstil();
         changeTextField(gameLogic.getSynligtOrd());
         imgView.setImageResource(R.drawable.galge);
+
+        editor = myPrefs.edit();
+        editor.putString("word", gameLogic.getOrdet());
+        editor.apply();
+
+
 
     }
 
@@ -105,9 +124,26 @@ public class NewGame extends AppCompatActivity {
         }
         letterField.setText("");
 
+        if (gameLogic.erSpilletSlut()) {
 
+            if (gameLogic.erSpilletVundet()){
+                editor = myPrefs.edit();
+                editor.putBoolean("condition", true);
+                editor.apply();
+            }
+            else if (gameLogic.erSpilletTabt()){
+                editor = myPrefs.edit();
+                editor.putBoolean("condition", false);
+                editor.apply();
+            }
+            editor = myPrefs.edit();
+            editor.putInt("fails", gameLogic.getAntalForkerteBogstaver());
+            editor.apply();
 
+            Intent gameOver = new Intent(getApplicationContext(), EndgameScreen.class);
+            startActivity(gameOver);
 
+        }
 
 
         inputManager = (InputMethodManager)
@@ -115,6 +151,7 @@ public class NewGame extends AppCompatActivity {
 
         inputManager.hideSoftInputFromWindow(guessBtn.getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
+
     }
 
     public void changePicture(int i) {
