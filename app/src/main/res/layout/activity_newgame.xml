@@ -45,7 +45,7 @@
     <TextView
         android:id="@+id/usedLettersField"
         android:layout_width="335dp"
-        android:layout_height="30dp"
+        android:layout_height="41dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -77,31 +77,28 @@
         android:id="@+id/guessBtn"
         android:layout_width="105dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginTop="4dp"
         android:background="@android:color/holo_blue_dark"
         android:text="Guess"
-        android:textSize="20sp"
         android:textColor="@android:color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usedLettersField" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/letterField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="6dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guessBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usedLettersField" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/startBtn"

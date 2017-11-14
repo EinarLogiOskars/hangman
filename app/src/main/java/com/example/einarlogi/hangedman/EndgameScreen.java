@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 public class EndgameScreen extends AppCompatActivity {
 
-    Galgelogik gameLogic;
-
     SharedPreferences myPrefs;
     SharedPreferences.Editor editor;
 
@@ -59,6 +57,7 @@ public class EndgameScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent newGame = new Intent(getApplicationContext(), NewGame.class);
                 startActivity(newGame);
+                finish();
             }
         });
 

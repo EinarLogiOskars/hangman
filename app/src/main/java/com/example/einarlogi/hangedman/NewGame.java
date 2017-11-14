@@ -4,7 +4,9 @@ package com.example.einarlogi.hangedman;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -40,6 +42,19 @@ public class NewGame extends AppCompatActivity {
 
         gameLogic = new Galgelogik();
 
+        class downloadWords extends AsyncTask {
+            @Override
+            protected Object doInBackground(Object... arg0) {
+                try {
+                    gameLogic.hentOrdFraDr();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        }
+        new downloadWords().execute();
+
         myPrefs = getSharedPreferences("prefs", 0);
 
         imgView = (ImageView) findViewById(R.id.imageView);
@@ -54,6 +69,8 @@ public class NewGame extends AppCompatActivity {
         usedLetters.setVisibility(View.GONE);
         letterField.setVisibility(View.GONE);
         guessBtn.setVisibility(View.GONE);
+
+
 
         startBtn = (Button) findViewById(R.id.startBtn);
 
@@ -82,8 +99,9 @@ public class NewGame extends AppCompatActivity {
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainMenu = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(mainMenu);
+                //Intent mainMenu = new Intent(getApplicationContext(), MainActivity.class);
+                //startActivity(mainMenu);
+                finish();
             }
         });
 
@@ -102,8 +120,6 @@ public class NewGame extends AppCompatActivity {
         editor.putString("word", gameLogic.getOrdet());
         editor.apply();
 
-
-
     }
 
     public void guess() {
@@ -116,7 +132,6 @@ public class NewGame extends AppCompatActivity {
                 wrongGuesses++;
                 changePicture(wrongGuesses);
             }
-            String lettersUsed = gameLogic.getBrugteBogstaver().toString();
             updateUsedLetters();
         }
         else if(letter.length() != 1) {
@@ -143,6 +158,7 @@ public class NewGame extends AppCompatActivity {
 
             Intent gameOver = new Intent(getApplicationContext(), EndgameScreen.class);
             startActivity(gameOver);
+            finish();
 
         }
 

@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".NewGame" />
         <activity android:name=".EndgameScreen" />
-        <activity android:name=".HighScore"></activity>
+        <activity android:name=".HighScore" />
+        <activity android:name=".Help"></activity>
     </application>
 
 </manifest>
