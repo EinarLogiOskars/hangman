@@ -1,33 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright"
-    tools:context="com.example.einarlogi.hangedman.MainActivity">
+    android:background="@android:color/holo_red_dark"
+    tools:context="com.example.einarlogi.hangedman.MainActivity"
+    android:orientation="vertical">
 
 
-    <fragment
-        android:id="@+id/topFrag"
-        class="com.example.einarlogi.hangedman.TopFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.8" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="62dp"
+        android:layout_height="149dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logoText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_hanging_rope_1295442" />
 
+    <TextView
+        android:id="@+id/logoText"
+        android:layout_width="229dp"
+        android:layout_height="86dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="casual"
+        android:text="Hangman"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle.Inverse"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toStartOf="@+id/newGameBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <fragment
-        android:id="@+id/bottomFrag"
-        class="com.example.einarlogi.hangedman.BottomFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.2" />
+    <Button
+        android:id="@+id/newGameBtn"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="41dp"
+        android:background="@android:color/holo_blue_dark"
+        android:fontFamily="sans-serif"
+        android:text="New Game"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    <fragment
-        android:id="@+id/main_Menu"
-        class="com.example.einarlogi.hangedman.MainMenu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+    <Button
+        android:id="@+id/highScoreBtn"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="33dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="33dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="High Score"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/helpBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newGameBtn" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/helpBtn"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="163dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginStart="82dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Help"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

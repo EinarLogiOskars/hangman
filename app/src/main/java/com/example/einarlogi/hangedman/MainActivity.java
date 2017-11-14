@@ -1,85 +1,56 @@
 package com.example.einarlogi.hangedman;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
-public class MainActivity extends AppCompatActivity implements BottomFragment.letterChooser, TopFragment.pictureChanger, MainMenu.mainMenu {
+public class MainActivity extends AppCompatActivity {
 
-    private Galgelogik logic = new Galgelogik();
-    BottomFragment bottomFragment;
-    TopFragment topFrag;
-    MainMenu mainMenu;
+    Button newGameBtn;
+    Button highScore;
+    Button helpBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainMenu = (MainMenu)getFragmentManager().findFragmentById(R.id.main_Menu);
-        bottomFragment = (BottomFragment)getFragmentManager().findFragmentById(R.id.bottomFrag);
-        topFrag = (TopFragment)getFragmentManager().findFragmentById(R.id.topFrag);
-
-    }
-
-    @Override
-    public void newGame() {
-        getFragmentManager().beginTransaction().hide(mainMenu).commit();
-        logic.nulstil();
-        changeText(logic.getSynligtOrd());
-    }
-
-    @Override
-    public void returnToMenu() {
-        getFragmentManager().beginTransaction().show(mainMenu).commit();
-    }
-
-    @Override
-    public void help() {
-
-    }
-
-    @Override
-    public void highScore() {
-
-    }
-
-    @Override
-    public void chooseLetter(String letter) {
-
-        logic.gætBogstav(letter);
-        if (logic.erSidsteBogstavKorrekt()){
-            changeText(logic.getSynligtOrd());
-        }
-        else {
-            if (logic.erSpilletTabt()) {
-                changeText("You have lost... The word was " + logic.getOrdet());
-                letter = "";
+        newGameBtn = (Button) findViewById(R.id.newGameBtn);
+        newGameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newgame = new Intent(getApplicationContext(), NewGame.class);
+                startActivity(newgame);
             }
-            changePic(logic.getAntalForkerteBogstaver());
-            usedLetters(letter);
-        }
-        if (logic.erSpilletVundet()) {
-            changeText("Congratulations you have won!! The word was " + logic.getOrdet());
-        }
+        });
+
+        highScore = (Button) findViewById(R.id.highScoreBtn);
+        highScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent highScore = new Intent(getApplicationContext(), HighScore.class);
+                startActivity(highScore);
+            }
+        });
+
+        helpBtn = (Button) findViewById(R.id.helpBtn);
+        helpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent help = new Intent(getApplicationContext(), Help.class);
+                startActivity(help);
+            }
+        });
+
     }
 
-    @Override
-    public void changePic(int i) {
-        topFrag.changePicture(i);
-    }
 
-    @Override
-    public void changeText(String word) {
-        topFrag.changeTextField(word);
-    }
 
-    @Override
-    public void usedLetters(String letters) { topFrag.updateUsedLetters(letters); }
 
 
 }

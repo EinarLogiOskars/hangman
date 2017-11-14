@@ -1,7 +1,27 @@
 <resources>
     <string name="select_button">Select</string>
     <string name="app_name">Hanged Man</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Back</string>
+    <string name="play_again">Play Again</string>
+    <string name="a_new_high_score">A new high score!</string>
+    <string name="victory">You have won!</string>
+    <string name="defeat">You have lost!</string>
+
+    <string name="about_text">Hangman is a game in which you try to save the
+        stickman from being hanged. You have to guess the
+        word shown on screen as a certain amount of
+        stars * where each star represents a letter in
+        the word. After failing six times the stickman
+        is hanged and you lose the game. Your only chance
+        to win the game is by completing the word in six
+        tries or less and therefore saving the poor guy
+        from hanging.
+        \n\n
+        This project was created as a part of the Course
+        62550 User experience and mobile application development
+        E17 at DTU.
+        \n\n\n\n
+        Einar Logi Óskarsson\n
+        S165226@student.dtu.dk</string>
 </resources>
